@@ -85,6 +85,9 @@ class App {
 	    fetch('./color', {
 	        method: "POST",
 	        body: this.req(),
+			headers: {
+		        'auth-token': this.randCoord().reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+		      },
 	    })
 	    .then(function(res) {
 	       return res.json().then(color => ({ color, res }))
